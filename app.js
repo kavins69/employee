@@ -9,7 +9,6 @@ const logger = require("koa-logger");
 const app = new Koa();
 // app.use(logger());
 // app.use(cors())
-console.log("hello")
 db.sequelize.sync({ force: false})
 app.use(koaBody());
 routes.createRoute(app);
