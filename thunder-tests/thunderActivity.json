@@ -4,19 +4,23 @@
         "colId": "history",
         "containerId": "",
         "name": "https://localhost:8080/api/v1/employees/create",
-        "url": "http://localhost:8080/api/v1/employee/display?id=4",
+        "url": "http://localhost:8080/api/v1/employee/display",
         "method": "GET",
         "sortNum": 0,
         "created": "2023-07-12T12:34:29.959Z",
-        "modified": "2023-07-13T07:20:10.903Z",
-        "headers": [],
-        "params": [
+        "modified": "2023-07-14T13:30:58.218Z",
+        "headers": [
             {
-                "name": "id",
-                "value": "4",
-                "isPath": false
+                "name": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbXBsb3llZSI6eyJpZCI6MiwibmFtZSI6ImhlbGxvIiwic2FsYXJ5Ijo0MDAwMDB9LCJpYXQiOjE2ODkzNDEzNjZ9.LaV4jC-3b0rUxiefQsgWp76m6LzwtEqie0fd1T66rQc"
+            },
+            {
+                "name": "User-Agent",
+                "value": "Thunder Client (https://www.thunderclient.com)",
+                "isDisabled": true
             }
         ],
+        "params": [],
         "tests": []
     },
     {
@@ -28,12 +32,23 @@
         "method": "POST",
         "sortNum": 0,
         "created": "2023-07-12T12:56:27.172Z",
-        "modified": "2023-07-13T06:10:55.043Z",
-        "headers": [],
+        "modified": "2023-07-14T13:29:26.254Z",
+        "headers": [
+            {
+                "name": "Accept",
+                "value": "*/*",
+                "isDisabled": true
+            },
+            {
+                "name": "User-Agent",
+                "value": "Thunder Client (https://www.thunderclient.com)",
+                "isDisabled": true
+            }
+        ],
         "params": [],
         "body": {
             "type": "json",
-            "raw": "{\n  \"id\" : 5,\n  \"name\": \"hello\",\n  \"salary\" : 400\n}",
+            "raw": "{\n  \"id\" : 2,\n  \"name\": \"hello\",\n  \"salary\" : 400000\n}",
             "form": []
         },
         "tests": []

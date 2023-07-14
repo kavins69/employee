@@ -21,14 +21,14 @@ const createProfile= async (ctx)=>{
     }
     try{
         data = await Profile.create(profile)
-        token=jwt.sign(profile,secret);
         payload={
-            employee:{
                 id : profile.id,
                 name : profile.name,
                 salary : profile.salary
-            }
+            
         }
+    token=jwt.sign(payload,secret);
+
     }catch(err){
         error=err;
         responseCode= HttpStatusCodes.BAD_REQUEST;
@@ -44,17 +44,36 @@ const getProfile = async (ctx) => {
     let error = null;
     let responseCode = HttpStatusCodes.SUCCESS;
     let { data , payload } = {};
-    const {id} =ctx.request.query;
-    data = await Profile.findOne({
-     where: {
-        id : id
-    }
-});
+    const id =_.get(ctx.request.employee, "id")
+    console.log(id)
+    try{
+        data = await Profile.findOne({
+            raw : true,
+            where: {
+               id : id
+           }
+       })
+       console.log(data);
+
     if(!data){
         ctx.body=responseHelper.errorResponse({code:ERR_SBEE_0002})
         ctx.response.status=HttpStatusCodes.NOT_FOUND;
-        
+        return;
     }
+    payload={
+        profile:{
+            id : data.id,
+            name : data.name,
+            salary : data.salary
+        }
+    }
+    ctx.body=responseHelper.buildResponse(error,{payload})
+    ctx.response.status=responseCode;
+}catch (err) {
+    error = err;
+    responseCode = HttpStatusCodes.BAD_REQUEST;
+}
+
 }
 
 module.exports = {
